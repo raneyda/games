@@ -33,7 +33,7 @@ game_version = .1
 #
 #   Define variables
 #
-num_players = 4
+num_players = 2
 push_round = 0
 betting_pool = 0
 current_round = 0
@@ -262,26 +262,32 @@ def count_players(push_count):
         return 2
     else:
         return number_of_players
+
+def set_number_of_players():
+    global num_players
+    #
+    #   Take number of players as input
+    #
+    try:
+        num_players = int(input("Number of players (default - 2): "))
+    except ValueError:
+        print('Invalid number of players.  Setting players to 2')
+        num_players = 2
+
+    if (num_players > 6) or (num_players < 0):
+        print('Invalid number of players.  Setting players to 2')
+        num_players = 2
+    else:
+        print('Number of players is: {:1d}'.format(num_players))
+
+    return num_players
+
 #
 #   Begin main program
 #
 print('Cee-lo - version {:.1f}'.format(game_version))
 
-#
-#   Take number of players as input
-#
-#try:
-#    int(input("Number of players (default - 2): "), num_players)
-#except ValueError:
-#    num_players = 2
-
-if (num_players > 6) or (num_players < 0):
-    print('Invalid number of players.  Setting players to 2')
-    num_players = 2
-else:
-    print('Number of players is: {:1d}'.format(num_players))
-
-players_remaining = num_players
+players_remaining = set_number_of_players()
 
 #
 #   Setup initial players
