@@ -115,11 +115,12 @@ def print_banks(number_of_players):
 #   Place a $10 bet for each remaining player (bank > 0)
 #
 def place_bets(players):
-    #   Print current banks
+    #   Place bets
+    minimum_bet = 20
     for player in players:
         if player_banks[player] > 0:
-            player_bet[player] = 10
-            player_banks[player] = player_banks[player] - 10
+            player_bet[player] = minimum_bet
+            player_banks[player] = player_banks[player] - minimum_bet
             player_points[player] = 0
     return
 
@@ -146,17 +147,21 @@ def play_round(players):
     point = 0
     push = 0
 
-    for player in players:
-        player_points[player] = 0
+    #
+    #   Reset points to zero for all players
+    #
+    for i in range(num_players):
+        player_points[i] = 0
 
     for player in players:
         point = 0
         while point == 0:
             point = shoot_dice(player+1)
-        if (point != 1) and (point != 6) and (player_points[player] != 0) and (setpoint == 0):
+        if (point != 1) and (point != 6) and (player_points[player] == 0) and (setpoint == 0):
             player_points[player] = point
             setpoint = player_points[player]
             setpoint_player = player
+            print('Player {:1d} sets point at ({:1d})'.format(player+1,point))
         elif (point == 1):
             player_points[player] = point
             betting_pool = betting_pool + player_bet[player]
@@ -191,16 +196,23 @@ def play_round(players):
                 push = 1
 
     #
-    #   Payout the winner
+    #   Payout the winner or tally the bets
     #
     if (push == 0) and (point != 6):
         for l in range(num_players):
             if player_bet[l] > 0:
                 betting_pool = betting_pool + player_bet[l]
                 player_bet[l] = 0
-        player_banks[setpoint_player] = player_banks[setpoint_player] + betting_pool
+
+        player_banks[setpoint_player] += betting_pool
         betting_pool = 0
         print('Player {:1d} wins! ({:1d})'.format(setpoint_player+1,player_points[setpoint_player]))
+    else:
+        for l in range(num_players):
+            if player_bet[l] > 0:
+                betting_pool = betting_pool + player_bet[l]
+                player_bet[l] = 0
+
     return push
 
 #
@@ -215,18 +227,21 @@ def find_active_players(fa_push=0):
     if fa_push == 1:
         #print('Finding active pushed players')
         push_players = max(player_points)
+
         for i in range(num_players):
             if player_points[i] == push_players:
-                active_players.insert(i + i % players_remaining, i)
+                #print('Push player {:1d} bank: {:1d}, point: {:1d}'.format(i+1,player_banks[i],player_points[i]))
+                active_players.insert(i, i)
 
     # If not a push then add all players with a current bank
     else:
         #print('Finding regular active players')
 
         for i in range(num_players):
-            if player_banks[i] != 0:
-                active_players.insert(i + current_round % players_remaining, i)
+            if player_banks[i] > 0:
+                active_players.insert(i, i)
                 #print('Player {:1d}, round index: {:1d}'.format(i+1,i + players_remaining % (current_round+1)))
+
 
     random.shuffle(active_players)
     #print(active_players)
@@ -235,9 +250,18 @@ def find_active_players(fa_push=0):
 def find_winner():
     for i in range(num_players):
         if player_banks[i] != 0:
-            print('Game over! Player {:1d} wins!'.format(i))
+            print('Game over! Player {:1d} wins!'.format(i+1))
     return
 
+def count_players(push_count):
+    number_of_players = 0
+    for i in range(num_players):
+        if player_banks[i] > 0:
+            number_of_players += 1
+    if (push_count == 1) and (number_of_players == 1):
+        return 2
+    else:
+        return number_of_players
 #
 #   Begin main program
 #
@@ -292,7 +316,7 @@ while players_remaining > 1:
 
     # Find active players
     find_active_players(push_round)
-    players_remaining = len(active_players)
+    players_remaining = count_players(push_round)
     input('Press Enter to continue to next round')
 
 find_winner()
