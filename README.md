@@ -12,20 +12,20 @@ grows in complexity.  In addition I plan to update this as I learn more.
 ### Completed ###
 
 - coin
-* flipcoin.py
+  * flipcoin.py
 - dice
-* dice.py
-* ceelo.py
+  * dice.py
+  * ceelo.py
 - cards
-* tbd
+  * tbd
 
 ### Next Steps ###
 
 - add proper docstrings
 - move common functions into a module (games)
 - complete additional games
-* cards/trash.py
-* dice/street_craps.py
+  * cards/trash.py
+  * dice/street_craps.py
 
 ### Contact Information ###
 
