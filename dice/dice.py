@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''This game is a roll the dice game
 
-    Version .2 added the gamges/dice module
+    Version .2 added the games/dice module
 '''
 
 #
