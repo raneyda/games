@@ -1,22 +1,19 @@
 #!/usr/bin/python3
-#
-#   This game is a coin flip game
-#
+'''This game is a coin flip game
+
+    Version .2 extracts the functions into a module
+'''
 
 #
 #   Imports
 #
-import random
+import sys
+sys.path.append('N:\dev\games\\')
 
-game_version = .1
+import games.coin
+
+game_version = .2
 
 print('Coin flip - version {:.1f}'.format(game_version))
 
-prob = random.random()
-
-print('Random number: {:.2f}'.format(prob))
-
-if prob <= .5:
-    print('Heads wins!')
-else:
-    print('Tails wins!')
+print(games.coin.flipcoin(), "wins!")
