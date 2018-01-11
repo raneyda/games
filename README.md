@@ -21,8 +21,8 @@ grows in complexity.  In addition I plan to update this as I learn more.
 
 ### Next Steps ###
 
-- add proper docstrings
-- move common functions into a module (games)
+- add proper docstrings [In Progress]
+- move common functions into a module (games) [In Progress]
 - complete additional games
   * cards/trash.py
   * dice/street_craps.py
