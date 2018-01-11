@@ -12,7 +12,8 @@ grows in complexity.  In addition I plan to update this as I learn more.
 ### Completed ###
 
 - coin
-  * flipcoin.py
+  * coinflip.py
+  * coin_frequency.py
 - dice
   * dice.py
   * ceelo.py
