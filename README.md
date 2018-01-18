@@ -14,9 +14,11 @@ grows in complexity.  In addition I plan to update this as I learn more.
 I have modified several games from a single file to use a module 'games'.
 This module provides access to functions to build games of different types.
 
-- games/coin
-- games/dice
-- games/core
+games is a module directory under games
+
+- games/coin.py
+- games/dice.py
+- games/core.py
 
 Core provides game functions that span different game types.
 Coin provides game functions for coin games.
