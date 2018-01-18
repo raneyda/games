@@ -9,6 +9,19 @@ grows in complexity.  In addition I plan to update this as I learn more.
 - dice
 - cards
 
+### Module directories ###
+
+I have modified several games from a single file to use a module 'games'.
+This module provides access to functions to build games of different types.
+
+- games/coin
+- games/dice
+- games/core
+
+Core provides game functions that span different game types.
+Coin provides game functions for coin games.
+Dice provides game functions and classes for dice games.
+
 ### Completed ###
 
 - coin
@@ -22,9 +35,9 @@ grows in complexity.  In addition I plan to update this as I learn more.
 
 ### Next Steps ###
 
-- add proper docstrings [In Progress]
-- move common functions into a module (games) [In Progress]
-- complete additional games
+- Add proper docstrings [In Progress]
+- Move common functions into a module (games) [In Progress]
+- Complete additional games
   * cards/trash.py
   * dice/street_craps.py
 
