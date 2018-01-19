@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-#
-#   This game is called Cee-Lo
-#
-'''
+''' Dice Game Known as CeeLo
     Rules to Cee-Lo (no banker)
 
     Each player rolls 3 Dice
@@ -10,13 +7,12 @@
     Roll 4,5,6 Automatic Win
     Roll 1,2,3 Automatic Lose
     Roll a pair and the odd dice is the kicker
-     - Kicker value of 1 automatic lose
-     - Kicker value of 6 automatic win
 
     A player rolls until they set a point.  The set point is the kicker
-    of 2,3,4,5.  If no doubles are rolled player re-rolls.
+    of 1,2,3,4,5,6.  If no doubles are rolled player re-rolls.
 
-    Trips (3 matching dice) are not treated differntly than doubles.
+    Trips (3 matching dice) are treated differntly than single points.  A
+    trip beats a single of any value and a trip of lesser value.
 
 '''
 
