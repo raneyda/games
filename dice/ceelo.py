@@ -38,6 +38,35 @@ import games.coin
 import games.core
 import games.dice
 
+if (len(sys.argv)) > 1:
+    myargs = games.core.getopts(sys.argv)
+    #
+    #   Parse arguments
+    #
+    if '-b' in myargs:
+        try:
+            int(myargs['-b']) > 1
+            games.dice.CeeLoPlayer.default_bet = int(myargs['-b'])
+        except ValueError:
+            games.dice.show_arguments('CeeLo')
+
+    if '-p' in myargs:
+        try:
+            int(myargs['-p']) > 1
+            if (1 > int(myargs['-p']) < 9):
+                number_of_players = int(myargs['-p'])
+            else:
+                number_of_players = games.core.set_number_of_players()
+                #number_of_players = 4
+        except ValueError:
+            games.dice.show_arguments('CeeLo')
+    else:
+        number_of_players = games.core.set_number_of_players()
+        #number_of_players = 4
+else:
+    number_of_players = games.core.set_number_of_players()
+    #number_of_players = 4
+
 #
 #   Set constants
 #
@@ -48,9 +77,7 @@ game_version = .2
 #
 players = []
 
-#number_of_players = games.core.set_number_of_players()
-number_of_players = 4
-
+#   Initialize Players
 for i in range(number_of_players):
     players.append(games.dice.CeeLoPlayer())
 

@@ -264,3 +264,9 @@ def ceelo_dice(rolled_dice):
         return 9
     # no point set, not a combination
     return 0
+
+def show_arguments(game):
+    if game == 'CeeLo':
+        print("==================\nUsage: ceelo.py -p <num> -b <bum>\n\n   -p   number of players from 2 - 8\n   -b   default bet from 1 to 100\n")
+        sys.exit()
+    return

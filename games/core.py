@@ -51,3 +51,14 @@ def player_order(passed_players, setpoint=0):
     rotated_list = deque(player_list)
     rotated_list.rotate(random_start)
     return rotated_list
+
+def getopts(argv):
+    """Collect command-line options in a dictionary
+       borrowed from: https://gist.github.com/dideler/2395703
+    """
+    opts = {}       # Empty dictionary to store key-value pairs.
+    while argv:     # While there are arguments left to parse...
+        if argv[0][0] == '-':  # Found a "-name value" pair.
+            opts[argv[0]] = argv[1]  # Add key and value to the dictionary.
+        argv = argv[1:]  # Reduce the argument list by copying it starting from index 1.
+    return opts
