@@ -1,13 +1,13 @@
-'''Module for coin functions of games
-'''
+"""Module for coin functions of games
+"""
 #
 #   Imports
 #
 import random
 
 def flipcoin():
-    '''Function to return Heads or Tails of a coin flip
-    '''
+    """Function to return Heads or Tails of a coin flip
+    """
     prob = random.random()
 
     if prob <= .49999:

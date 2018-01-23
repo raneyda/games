@@ -1,5 +1,5 @@
-'''Module for dice functions of games
-'''
+"""Module for dice functions of games
+"""
 #
 #   Imports
 #
@@ -20,8 +20,8 @@ import games.core
 #   Define Classes
 #
 class DicePlayer:
-    '''A player of a dice game
-    '''
+    """A player of a dice game
+    """
     starting_bank = 100
     default_bet = 10
     player_id = 1
@@ -37,14 +37,14 @@ class DicePlayer:
         return
 
 class CeeLoPlayer(DicePlayer):
-    '''A player of a CeeLo dice game
-    '''
+    """A player of a CeeLo dice game
+    """
     def __repr__(self):
         return("Player {:d}, bank: {:d}, current bet: {:d}, last roll: {:d}".format(self.player_id,self.bank,self.bet,self.point))
 
     def ante(self):
-        '''Player bets
-        '''
+        """Player bets
+        """
         if (self.bank > 0) and (self.active):
             self.bet = self.default_bet
             self.bank -= self.bet
@@ -52,8 +52,8 @@ class CeeLoPlayer(DicePlayer):
         return
 
     def roll_the_dice(self, combo):
-        '''Player rolls dice
-        '''
+        """Player rolls dice
+        """
         self.dice = shoot_dice(combo)
         self.point = ceelo_dice(self.dice)
         if self.point == 1:
@@ -62,8 +62,8 @@ class CeeLoPlayer(DicePlayer):
         return
 
 class CeeLo:
-    '''The CeeLo game includes a list of players
-    '''
+    """The CeeLo game includes a list of players
+    """
     def __init__(self, instance_players):
         self.push = False
         self.setpoint = 0
@@ -75,8 +75,8 @@ class CeeLo:
         return
 
     def play_round(self):
-        '''Play one round of Cee Lo
-        '''
+        """Play one round of Cee Lo
+        """
         # Define tuples
         singles = (1,2,3,4,5,6)
         trips = (111,222,333,444,555,666)
@@ -173,12 +173,12 @@ class CeeLo:
 #   Begin dice functions
 #
 def roll_die():
-    '''Function to roll a die and return a value 1 - 6
-    '''
+    """Function to roll a die and return a value 1 - 6
+    """
     return rpg_die(6)
 
 def rpg_die(sides, percentile=0):
-    '''Function to roll a die and return a value based on the numbers of sides
+    """Function to roll a die and return a value based on the numbers of sides
 
     Roleplaying games (rpg) use 7 dice sets
 
@@ -192,7 +192,7 @@ def rpg_die(sides, percentile=0):
         D20 (Icosahedron), returns 1-20
 
     Based on the numebr of sides return a value for that type of die
-    '''
+    """
     if type(sides) is not int:
         return 0
 
@@ -212,7 +212,7 @@ def rpg_die(sides, percentile=0):
         return 0
 
 def shoot_dice(combo="1D6", percentile=0):
-    '''Allows for multiple device to be rolled and returned
+    """Allows for multiple device to be rolled and returned
 
     The format is xDy, where x is the number of dice and y is sides of the die
     Examples:
@@ -221,7 +221,7 @@ def shoot_dice(combo="1D6", percentile=0):
     2D4 would roll (2) 4 sided dice
 
     if no argument is given it defaults to "1D6"
-    '''
+    """
 
     if type(combo) is not str:
         return 0
@@ -237,7 +237,7 @@ def shoot_dice(combo="1D6", percentile=0):
     return rolls
 
 def ceelo_dice(rolled_dice):
-    '''Take in a list of dice, sort them and evaluate whether a valid combo
+    """Take in a list of dice, sort them and evaluate whether a valid combo
 
         Takes in a list of (3) numbers
         Returns:
@@ -245,7 +245,7 @@ def ceelo_dice(rolled_dice):
             9 = automatic win
           xxx = trips
             x = valid combination, point
-    '''
+    """
     rolled_dice.sort()
 
     if (rolled_dice[0] == rolled_dice[1] and rolled_dice[2]) or (rolled_dice[1] == rolled_dice[2]):

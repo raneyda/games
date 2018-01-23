@@ -42,6 +42,10 @@ Dice provides game functions and classes for dice games.
 - Complete additional games
   * cards/trash.py
   * dice/street_craps.py
+- Python / programming best practices
+  * Logging / Error checking
+  * Unit testing
+  * Internal self checks (assertions)
 
 ### Contact Information ###
 

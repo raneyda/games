@@ -1,5 +1,5 @@
-'''Module for dice functions of games
-'''
+"""Module for dice functions of games
+"""
 #
 #   Imports
 #
@@ -10,8 +10,8 @@ from collections import deque
 #   Define Classes
 #
 def set_number_of_players():
-    '''Allows input of number of playerss, return a valid number of players
-    '''
+    """Allows input of number of playerss, return a valid number of players
+    """
     print("Getting number of players")
     try:
         num_players = int(input("Number of players (default - 2): "))
@@ -29,9 +29,9 @@ def set_number_of_players():
 
 
 def player_order(passed_players, setpoint=0):
-    ''' Determines a random order of players based list of players
+    """ Determines a random order of players based list of players
         Returns an list of player instances
-    '''
+    """
     total_players = 0
     player_list = []
     for player in passed_players:
